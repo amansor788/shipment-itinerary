@@ -5,5 +5,5 @@ import selectReducer from './selectReducer';
 
 export default combineReducers({
   stops: stopsReducer,
-  selectedStopId: selectReducer,
+  selectedStop: selectReducer,
 });
