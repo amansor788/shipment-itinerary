@@ -13,6 +13,7 @@ The app will allow the users to add, edit, and remove stops from the itinerary. 
   - Logo and most of the styling obtained from Shipwell login page: https://app.shipwell.com/
 * Call to address validation API implemented with AXIOS lib.
 * Redux Thunk used as middleware.
+* Jest/Enzyme used as Test Schema.
 
 ### App
 
