@@ -1,4 +1,4 @@
-import {ADD_STOP, UPDATE_STOP, DELETE_STOP, SELECT_STOP, UNSELECT_STOP} from './types';
+import {ADD_STOP, UPDATE_STOP, DELETE_STOP, SELECT_STOP, UNSELECT_STOP, COMPLETE_STOP} from './types';
 import shipwellApi from '../apis/shipwellApi';
 
 
@@ -12,7 +12,9 @@ export const addStop = (stop, callbackOk, callbackError) => async (dispatch, get
 
   return dispatch ({
       type: ADD_STOP
-      , payload: {...stop, geocoded_address: response.data.geocoded_address}});
+      , payload: {...stop,
+        complete: false,
+        geocoded_address: response.data.geocoded_address}});
 }
 
 export const updateStop = stop => async (dispatch, getState) => {
@@ -41,6 +43,13 @@ export const editStop = stop => {
 export const deleteStop = id => {
   return {
     type: DELETE_STOP,
+    payload: id
+  }
+}
+
+export const completeStop = id => {
+  return {
+    type: COMPLETE_STOP,
     payload: id
   }
 }
