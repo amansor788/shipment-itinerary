@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editStop } from '../actions';
+import { editStop, deleteStop } from '../actions';
 
-const StopListItem = ({ stop, editStop }) => {
+const StopListItem = ({ stop, editStop, deleteStop }) => {
 
   const formatted_address = `
     ${stop.geocoded_address.address_1} - 
@@ -12,7 +12,11 @@ const StopListItem = ({ stop, editStop }) => {
   const onEditStop = () => {
     editStop(stop)
   }
-  
+
+  const onDeleteStop = () => {
+    deleteStop(stop.id)
+  }
+
   return (
     <tr>
       <td>{stop.name}</td>
@@ -28,7 +32,7 @@ const StopListItem = ({ stop, editStop }) => {
         <button className="button-primary" onClick={() => onEditStop()}>
           Edit
         </button>
-        <button className="button-secondary" onClick={() => deleteStop()}>
+        <button className="button-secondary" onClick={() => onDeleteStop()}>
           Delete
         </button>
       </td>
@@ -36,4 +40,4 @@ const StopListItem = ({ stop, editStop }) => {
   )
 }
 
-export default connect (null, { editStop }) (StopListItem);
+export default connect (null, { editStop, deleteStop }) (StopListItem);

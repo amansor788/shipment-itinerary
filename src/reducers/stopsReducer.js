@@ -1,4 +1,4 @@
-import {ADD_STOP, UPDATE_STOP} from '../actions/types';
+import {ADD_STOP, UPDATE_STOP, DELETE_STOP} from '../actions/types';
 
 const INIT_STATE = [
   // {
@@ -22,6 +22,10 @@ export default (state=INIT_STATE, action) => {
     case UPDATE_STOP:
       return state.map((stop,index) => {
         return index === action.payload.id ? action.payload : stop});
+    case DELETE_STOP:
+      return state.filter((stop, index) => {
+        return index !== action.payload
+      });
     default:
       return state;
   }

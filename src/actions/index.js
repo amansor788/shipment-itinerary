@@ -38,3 +38,9 @@ export const editStop = stop => {
   }
 }
 
+export const deleteStop = id => {
+  return {
+    type: DELETE_STOP,
+    payload: id
+  }
+}
