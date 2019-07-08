@@ -52,8 +52,8 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
   }
 
   const submitForm = () => {
+    //ADD OR UPDATE
     if (validate()){
-      //ADD OR UPDATE
         stop.id === null 
         ? addStop(stopState)
           .then(() => setStopState({
