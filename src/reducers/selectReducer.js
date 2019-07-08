@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   addressError: '',
 }
 
-export default (state=INITIAL_STATE, action) => {
+export default (state=INITIAL_STATE, action={type:'UNDEF'}) => {
   switch (action.type) {
     case SELECT_STOP:
       return action.payload;
