@@ -8,8 +8,8 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
       nameError: '',
       address: '',
       addressError: '',
-  }
-  )
+      inProgress: false, 
+  })
 
   useEffect(() => {
     setStopState({
@@ -40,11 +40,11 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
     let addressErr = ''
 
     if (stopState.name.length === 0) {
-      nameErr = 'Enter a name!'
+      nameErr = 'Enter a name.'
     }
 
     if (stopState.address.length <= 3) {
-      addressErr = 'Enter an address of four characters at least!'
+      addressErr = 'Enter an address of at least 4 characters.'
     }
 
     setStopState({ ...stopState, nameError: nameErr, addressError: addressErr})
@@ -53,6 +53,8 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
   }
 
   const submitForm = () => {
+    // setStopState({...stopState, inProgress: true })
+    
     if (validate()){
       //ADD OR UPDATE
       stop.id === null 
@@ -71,6 +73,19 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
         : updateStop(stopState)
             .then(unselectStop());
     } 
+
+    // setStopState({...stopState, inProgress: false })
+  }
+
+  const cancelForm = () => {
+    stop.id === null
+      ? setStopState({
+        name: '',
+        nameError: '',
+        address: '',
+        addressError: '',
+      })
+      : unselectStop();
   }
 
   console.log('renderrrrr');
@@ -89,8 +104,14 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
           , stopState.addressError
           , (e) => {setStopState({...stopState, address: e.target.value})})}
 
-        <button className="button-primary" type='submit' onClick={() => submitForm()}>
+        <button 
+          className="button-primary" type='submit' 
+          {...stopState.inProgress ? 'disabled' : ''} 
+          onClick={() => submitForm()}>
           Submit
+        </button>
+        <button className="button-secondary" onClick={() => cancelForm()}>
+          Cancel
         </button>
       </div>
   )

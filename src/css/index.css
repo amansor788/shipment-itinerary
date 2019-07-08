@@ -1,5 +1,8 @@
 body{
-  background: lightblue;
+  /* background: lightblue; */
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857;
 }
 
 .container{
@@ -42,15 +45,15 @@ body{
 } 
 
 .form-container input{
+  color: #26282b;
+  background: #f3f9fd;
   padding: 0 0.9375rem;
   min-height: 1.6875rem;
   min-width: 12.8125rem;
   font-size: 1rem;
   line-height: 1.375rem;
-  color: #33475b;
-  background-color: #f5f8fa;
   border: 0.0625rem solid #cbd6e2;
-  border-radius: 0.25rem;
+  border-radius: 4px;
 }
 
 .input-error{
@@ -60,27 +63,45 @@ body{
 
 
 .button-primary{
-  background: #38a3dc;
-  border-color: #38a3dc;
-  color: #ffffff;
-  margin-left: 15px;
-  border-radius: 50px;
-  font-size: 0.8rem;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #319bf5;
+  border-color: #319bf5;
+  border: 1px solid #319bf5;
+  color: white;
+  transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
+  vertical-align: middle;
+  cursor: pointer;
   padding: 0px 12px;
-  font-weight: 600;
-  height: 1.6875rem;
+  font-size: 14px;
+  line-height: 1.42857;
+  border-radius: 4px;
+  margin-left: 10px;
+  min-width: 65px;
+  height: 30px;
+}
+
+.button-primary:disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
 
 .button-secondary{
-  background: orange;
-  border-color: orange;
-  color: #ffffff;
-  margin-left: 15px;
-  border-radius: 50px;
-  font-size: 0.8rem;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #d02139;
+  border-color: #d02139;
+  border: 1px solid #d02139;
+  color: white;
+  transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
+  vertical-align: middle;
+  cursor: pointer;
   padding: 0px 12px;
-  font-weight: 600;
-  height: 1.6875rem;
+  font-size: 14px;
+  line-height: 1.42857;
+  border-radius: 4px;
+  margin-left: 10px;
+  min-width: 65px;
+  height: 30px;
 }
 
 .custom-table{
