@@ -4,9 +4,9 @@ import StopListItem from './StopListItem';
 
 const StopList = ({ stops }) => {
   const renderList = () => {
-    return stops.map(stop => {
+    return stops.map((stop, id) => {
       return (
-          <StopListItem key={stop.id} stop={stop}/>
+          <StopListItem key={id} stop={{...stop, id}}/>
       );
     })
 
@@ -17,7 +17,6 @@ const StopList = ({ stops }) => {
       <table className="custom-table">
         <thead>
           <tr>
-            <th>Id</th>
             <th>Name</th>
             <th>Address</th>
             <th>Complete</th>
@@ -29,7 +28,7 @@ const StopList = ({ stops }) => {
         </tbody>
       </table>
     : 
-      <div> Please insert itinerary stops...</div>
+      <div className="custom-table"> Please insert itinerary stops...</div>
   )
 }
 

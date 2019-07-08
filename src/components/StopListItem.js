@@ -1,11 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { editStop } from '../actions';
 
-const StopListItem = ({stop}) => {
+const StopListItem = ({ stop, editStop }) => {
+
+  const formatted_address = `
+    ${stop.geocoded_address.address_1} - 
+    ${stop.geocoded_address.city} -
+    ${stop.geocoded_address.state_province}`;
+
+  const onEditStop = () => {
+    editStop(stop)
+  }
+  
   return (
     <tr>
-      <td>{stop.id}</td>
       <td>{stop.name}</td>
-      <td>{stop.address}</td>
+      <td>{formatted_address}</td>
       <td>
         <input
           type='checkbox'
@@ -14,10 +25,10 @@ const StopListItem = ({stop}) => {
         />
       </td>
       <td>
-        <button className="button-primary" onClick={() => editStop(stop)}>
+        <button className="button-primary" onClick={() => onEditStop()}>
           Edit
         </button>
-        <button className="button-secondary" onClick={() => deleteStop(stop)}>
+        <button className="button-secondary" onClick={() => deleteStop()}>
           Delete
         </button>
       </td>
@@ -25,4 +36,4 @@ const StopListItem = ({stop}) => {
   )
 }
 
-export default StopListItem;
+export default connect (null, { editStop }) (StopListItem);
