@@ -88,8 +88,6 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
       : unselectStop();
   }
 
-  console.log('renderrrrr');
-  
   return(
       <div className="form-container">
         {renderInput('Name'
