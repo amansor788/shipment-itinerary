@@ -8,7 +8,6 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
       nameError: '',
       address: '',
       addressError: '',
-      inProgress: false, 
   })
 
   useEffect(() => {
@@ -53,28 +52,25 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
   }
 
   const submitForm = () => {
-    // setStopState({...stopState, inProgress: true })
-    
     if (validate()){
       //ADD OR UPDATE
-      stop.id === null 
-        ? addStop(stopState,
-            () => setStopState({
-              name: '',
-              nameError: '',
-              address: '',
-              addressError: '',
-            }),
-            () => setStopState({
-              ...stopState
-              , addressError: 'Address invalidated by server!'
-            }),
-          )
+        stop.id === null 
+        ? addStop(stopState)
+          .then(() => setStopState({
+            name: '',
+            nameError: '',
+            address: '',
+            addressError: '',
+          }))      
+          .catch(() => setStopState({
+            ...stopState
+            , addressError: 'Address invalidated by server.'}))
         : updateStop(stopState)
-            .then(unselectStop());
+            .then(() => unselectStop())
+            .catch(() => setStopState({
+              ...stopState
+              , addressError: 'Address invalidated by server.'}));
     } 
-
-    // setStopState({...stopState, inProgress: false })
   }
 
   const cancelForm = () => {
@@ -104,7 +100,6 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
 
         <button 
           className="button-primary" type='submit' 
-          {...stopState.inProgress ? 'disabled' : ''} 
           onClick={() => submitForm()}>
           Submit
         </button>

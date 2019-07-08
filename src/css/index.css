@@ -1,5 +1,4 @@
 body{
-  /* background: lightblue; */
   font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
@@ -36,24 +35,25 @@ body{
 }
 
 .form-container label{
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: bold;
   text-align: left;
-  line-height: 1.25rem;
+  line-height: 1.42857;
   margin-right: 5px;
   margin-left: 10px;
+  color: #26282b;
 } 
 
 .form-container input{
   color: #26282b;
   background: #f3f9fd;
-  padding: 0 0.9375rem;
-  min-height: 1.6875rem;
-  min-width: 12.8125rem;
+  padding: 0 1rem;
+  min-width: 10rem;
   font-size: 1rem;
-  line-height: 1.375rem;
-  border: 0.0625rem solid #cbd6e2;
+  line-height: 1.42857rem;
+  border: 1px solid #dadada;
   border-radius: 4px;
+  height: 1.7rem;
 }
 
 .input-error{

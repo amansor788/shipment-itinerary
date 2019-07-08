@@ -6,10 +6,7 @@ export const addStop = (stop, callbackOk, callbackError) => async (dispatch, get
   const response = await shipwellApi.post(
       'locations/addresses/validate/', 
       { formatted_address: stop.address })
- //      .then(() => callbackOk())
-        ;
-        // .catch(() => callbackError());
-
+     
   return dispatch ({
       type: ADD_STOP
       , payload: {...stop,
