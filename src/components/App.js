@@ -6,7 +6,7 @@ import StopList from './StopList';
 
 const App = () => {
   return(
-    <div className="container">
+    <div className="container" data-test="component-app">
       <Header />
       <StopForm />
       <StopList />
