@@ -41,6 +41,11 @@ Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
+### `npm test`
+
+Runs Jest/Enzyme unit tests (jest --watch).
+Sample Test: Rendering Components Correctly, Action Creators, Reducers. 
+
 ### `npm run create`
 
 Generates /dist folder with built app
