@@ -10,7 +10,7 @@ const StopListItem = ({ stop, editStop, deleteStop, completeStop }) => {
     ${stop.geocoded_address.state_province}`;
 
   const onCompleteStop = () => {
-    completeStop(stop.id)
+    completeStop(stop.index)
   }
   
   const onEditStop = () => {
@@ -18,7 +18,7 @@ const StopListItem = ({ stop, editStop, deleteStop, completeStop }) => {
   }
 
   const onDeleteStop = () => {
-    deleteStop(stop.id)
+    deleteStop(stop.index)
   }
 
   return (

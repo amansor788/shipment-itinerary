@@ -11,13 +11,22 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
   })
 
   useEffect(() => {
-    setStopState({
-      id: stop.id,
-      name: stop.name,
-      nameError: '',
-      address: stop.address,
-      addressError: '',
-    });
+    setStopState(
+      stop === null 
+      ?{
+        name: '',
+        nameError: '',
+        address: '',
+        addressError: '',
+      } 
+      :{
+        index: stop.index,
+        name: stop.name,
+        nameError: '',
+        address: stop.address,
+        addressError: '',
+      }
+    );
   }, [stop]);
   
   const renderInput = (label, name, value, error, handleChange) => {
@@ -54,7 +63,7 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
   const submitForm = () => {
     //ADD OR UPDATE
     if (validate()){
-        stop.id === null 
+        stop === null 
         ? addStop(stopState)
           .then(() => setStopState({
             name: '',
@@ -74,7 +83,7 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
   }
 
   const cancelForm = () => {
-    stop.id === null
+    stop === null
       ? setStopState({
         name: '',
         nameError: '',
@@ -112,7 +121,7 @@ const StopForm = ({ stop, addStop, updateStop, unselectStop }) => {
 
 const mapStateToProps = (state) => {
   return {
-    stop: state.selectedStop,
+    stop: state.stops.selectedStop,
   };
 }
 

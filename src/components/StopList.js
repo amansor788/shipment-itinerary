@@ -4,9 +4,9 @@ import StopListItem from './StopListItem';
 
 const StopList = ({ stops }) => {
   const renderList = () => {
-    return stops.map((stop, id) => {
+    return stops.map((stop, index) => {
       return (
-          <StopListItem key={id} stop={{...stop, id}}/>
+          <StopListItem key={index} stop={{...stop, index}}/>
       );
     })
 
@@ -34,7 +34,7 @@ const StopList = ({ stops }) => {
 
 const mapStateToProps = (state) => {
   return {
-    stops: Object.values(state.stops),
+    stops: Object.values(state.stops.stops),
   };
 }
 

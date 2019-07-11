@@ -1,34 +1,29 @@
-import {ADD_STOP, UPDATE_STOP, DELETE_STOP, COMPLETE_STOP} from '../actions/types';
+import {ADD_STOP, UPDATE_STOP, DELETE_STOP, COMPLETE_STOP, SELECT_STOP, UNSELECT_STOP} from '../actions/types';
 
-const INIT_STATE = [
-  // {
-  //   name: 'Nombre',
-  //   address: 'Direccion jsAJSA, SAjksaJ ,SA saJKSAjsKLA',
-  //   geocoded_address: {},
-  //   complete: false, 
-  // },
-  // {
-  //   name: 'Nombre 2',
-  //   address: 'Direccion jsAJSA, SAjksaJ ,SA saJKSAjsKLA',
-  //   geocoded_address: {},
-  //   complete: false, 
-  // }
-]
+const INIT_STATE = {
+  stops: [],
+  selectedStop: null
+} 
 
-export default (state=INIT_STATE, action) => {
+export default (state=INIT_STATE, action={}) => {
   switch (action.type) {
     case ADD_STOP:
-      return [...state, action.payload];
+      return {...state, stops:[...state.stops, action.payload]};
     case UPDATE_STOP:
-      return state.map((stop,index) => {
-        return index === action.payload.id ? action.payload : stop});
+      return {...state, stops: state.stops.map((stop,index) => {
+        return index === action.payload.index ? action.payload : stop})};
     case DELETE_STOP:
-      return state.filter((stop, index) => {
+      return {...state, stops: state.stops.filter((stop, index) => {
         return index !== action.payload
-      });
+      })};
+    case SELECT_STOP:
+      return {...state, selectedStop: action.payload};
+    case UNSELECT_STOP:
+      return {...state, selectedStop: null};
     case COMPLETE_STOP:
-      return state.map((stop,index) => {
-        return index === action.payload ? {...stop, complete: !stop.complete} : stop});
+      const newArrStops = state.stops.map((stop,index) => {
+        return index === action.payload ? {...stop, complete: !stop.complete} : stop})
+      return {...state, stops: newArrStops};
     default:
       return state;
   }
